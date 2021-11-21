@@ -8,4 +8,6 @@ public interface ProductService {
     List<Product> getProducts();
 
     Product registerProduct(Product product);
+
+    Product updateProduct(Product product);
 }

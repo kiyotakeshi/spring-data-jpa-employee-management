@@ -25,4 +25,9 @@ public class ProductController {
     public Product register(@RequestBody Product request) {
         return productService.registerProduct(request);
     }
+
+    @PutMapping
+    public Product update(@RequestBody Product request){
+        return productService.updateProduct(request);
+    }
 }

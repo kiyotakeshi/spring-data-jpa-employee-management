@@ -2,8 +2,11 @@ package com.kiyotakeshi.employeeManagement.service;
 
 import com.kiyotakeshi.employeeManagement.repository.EmployeeRepository;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -17,6 +20,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getEmployees() {
+        // キーを指定して複数レコード取得することも可能
+        // return employeeRepository.findAllById(Arrays.asList(1,3));
         return employeeRepository.findAll();
     }
 
