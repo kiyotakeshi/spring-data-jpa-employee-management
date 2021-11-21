@@ -7,6 +7,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -39,12 +40,16 @@ public class Employee implements Serializable {
     @Column(unique = true)
     private String mailAddress;
 
-    public Employee(String firstName, String lastName, Gender gender, LocalDate birthday, String mailAddress) {
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<Telephone> telephones;
+
+    public Employee(String firstName, String lastName, Gender gender, LocalDate birthday, String mailAddress, List<Telephone> telephones) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.birthday = birthday;
         this.mailAddress = mailAddress;
+        this.telephones = telephones;
     }
 
     public Employee() {
