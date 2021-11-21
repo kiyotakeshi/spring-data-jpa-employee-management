@@ -1,12 +1,15 @@
+insert
+into department
+    (name, id)
+values ('sales', 1);
+
 INSERT INTO employee
-    (id, birthday, first_name, last_name, mail_address, gender)
-VALUES (1, '1999-11-29', 'mike', 'popcorn', 'mike.popcorn@mail.com', 'male');
+(id, birthday, first_name, last_name, mail_address, gender, department_id)
+VALUES (1, '1999-11-29', 'mike', 'popcorn', 'mike.popcorn@mail.com', 'male', 1);
+
 INSERT INTO employee
-    (id, birthday, first_name, last_name, mail_address, gender)
-VALUES (2, '1989-12-20', 'ichiro', 'yamada', 'ichiro.yamada@mail.com', 'male');
-INSERT INTO employee
-    (id, birthday, first_name, last_name, mail_address, gender)
-VALUES (3, null, 'hanako', 'ishii', null, 'female');
+(id, birthday, first_name, last_name, mail_address, gender, department_id)
+VALUES (2, '2009-01-19', 'kendrick', 'west', 'kendrick.west@mail.com', 'male', 1);
 
 insert
 into employee_telephones

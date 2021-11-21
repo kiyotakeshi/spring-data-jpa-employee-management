@@ -1,7 +1,15 @@
 drop table if exists authentication;
 drop table if exists employee_telephones;
 drop table if exists employee;
+drop table if exists department;
 drop table if exists product;
+
+create table department
+(
+    id   integer not null auto_increment,
+    name varchar(255),
+    primary key (id)
+);
 
 -- create table if not exists employee
 create table employee
@@ -12,11 +20,16 @@ create table employee
     last_name    varchar(20) not null,
     mail_address varchar(255),
     gender       varchar(10),
+    department_id integer not null,
     primary key (id)
 );
 
 alter table employee
     add constraint unique (mail_address);
+
+alter table employee
+    add constraint foreign key (department_id)
+        references department (id);
 
 create table employee_telephones
 (
