@@ -40,6 +40,8 @@ public class Employee implements Serializable {
     @Column(unique = true)
     private String mailAddress;
 
+    // コレクション型のフィールドで別テーブルにマッピングする
+    // マッピングされる別テーブルは主キーは持たず外部キー制約が設定される
     @ElementCollection(fetch = FetchType.LAZY)
     private List<Telephone> telephones;
 

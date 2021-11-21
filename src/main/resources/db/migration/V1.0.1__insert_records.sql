@@ -17,3 +17,8 @@ insert
 into employee_telephones
     (employee_id, number, type)
 values (1, '0120-555-555', 'business');
+
+insert
+into product
+    (price, category_name, product_name)
+values (20000, 'business', 'display1');

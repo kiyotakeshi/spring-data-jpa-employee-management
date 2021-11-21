@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+// 他のエンティティクラスに埋め込まれていることを示す
+// 電話番号だけに単体でアクセスすることがなく、
+// 必ず社員テーブルと結合してアクセスするため、エンティティとしては定義しない
 @Embeddable
 @ToString
 @Getter
