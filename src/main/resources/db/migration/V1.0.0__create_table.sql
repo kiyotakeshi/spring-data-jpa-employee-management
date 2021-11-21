@@ -1,3 +1,4 @@
+drop table if exists authentication;
 drop table if exists employee_telephones;
 drop table if exists employee;
 drop table if exists product;
@@ -39,4 +40,19 @@ create table product
     last_modified_date date,
     price              integer      not null,
     primary key (category_name, product_name)
-)
+);
+
+create table authentication
+(
+    id          integer not null auto_increment,
+    password    varchar(255),
+    employee_id integer not null,
+    primary key (id)
+);
+
+alter table authentication
+    add constraint unique (employee_id);
+
+alter table authentication
+    add constraint foreign key (employee_id)
+        references employee (id);

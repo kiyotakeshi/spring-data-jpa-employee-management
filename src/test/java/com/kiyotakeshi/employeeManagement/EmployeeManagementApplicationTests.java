@@ -1,6 +1,7 @@
 package com.kiyotakeshi.employeeManagement;
 
 import com.kiyotakeshi.employeeManagement.repository.EmployeeRepository;
+import com.kiyotakeshi.employeeManagement.repository.entity.Authentication;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.repository.entity.Telephone;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,9 @@ class EmployeeManagementApplicationTests {
                         new Telephone("0120-444-444", "bussiness"),
                         new Telephone("0120-555-555", "bussiness")
                 )));
+        Authentication authentication = new Authentication("password", employee);
         em.persistAndFlush(employee);
+        em.persistAndFlush(authentication);
     }
 
     @Test

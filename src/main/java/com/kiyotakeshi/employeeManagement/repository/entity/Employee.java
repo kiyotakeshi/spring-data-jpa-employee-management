@@ -1,8 +1,6 @@
 package com.kiyotakeshi.employeeManagement.repository.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,6 +41,10 @@ public class Employee implements Serializable {
     @Column(unique = true)
     private String mailAddress;
 
+    // 所有者(Authentication) のフィールド名を指定
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    private Authentication authentication;
+
     // コレクション型のフィールドで別テーブルにマッピングする
     // マッピングされる別テーブルは主キーは持たず外部キー制約が設定される
     @ElementCollection(fetch = FetchType.LAZY)
@@ -53,8 +57,5 @@ public class Employee implements Serializable {
         this.birthday = birthday;
         this.mailAddress = mailAddress;
         this.telephones = telephones;
-    }
-
-    public Employee() {
     }
 }
