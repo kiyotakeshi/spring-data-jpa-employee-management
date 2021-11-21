@@ -1,0 +1,30 @@
+spring:
+  jpa:
+    # @see https://stackoverflow.com/a/68086707
+    # insert into seats (id, name) values (100, 'okamoto'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SEATS" not found; SQL statement:
+    # @see https://spring.pleiades.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
+    # > EntityManagerFactory Bean が作成および初期化されるまで、データソースの初期化が延期されます。次に、schema.sql を使用して、Hibernate によって実行されるスキーマ作成に追加を行うことができ、data.sql を使用してそれを設定できます。
+    defer-datasource-initialization: true
+
+    show-sql: true
+    hibernate:
+      # ddl-auto を有効にしている場合は schema.sql は使わない
+      # @see https://docs.spring.io/spring-boot/docs/2.1.x/reference/html/howto-database-initialization.html#howto-initialize-a-database-using-spring-jdbc
+      # > In a JPA-based app, you can choose to let Hibernate create the schema or use schema.sql, but you cannot do both. Make sure to disable spring.jpa.hibernate.ddl-auto if you use schema.sql.
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: false
+  datasource:
+    url: jdbc:h2:mem:employeeManagement;DATABASE_TO_UPPER=false
+
+  sql:
+    init:
+      mode: always
+
+# パラメータの値をログに表示 ex.) binding parameter [1] as [INTEGER] - [1]
+# logging.level.org.hibernate.type: trace にして出力されるログからパッケージを特定
+# 2021-11-21 00:55:11.604 TRACE 11400 --- [ main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder: trace

@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -33,8 +34,19 @@ public class Employee implements Serializable {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private java.sql.Date birthday;
+    private LocalDate birthday;
 
     @Column(unique = true)
     private String mailAddress;
+
+    public Employee(String firstName, String lastName, Gender gender, LocalDate birthday, String mailAddress) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.mailAddress = mailAddress;
+    }
+
+    public Employee() {
+    }
 }
