@@ -20,5 +20,5 @@ values (1, '0120-555-555', 'business');
 
 insert
 into product
-    (price, category_name, product_name)
-values (20000, 'business', 'display1');
+(price, category_name, product_name, created_by, created_date, last_modified_by, last_modified_date)
+values (20000, 'business', 'display1', 'user', null, 'user', null);

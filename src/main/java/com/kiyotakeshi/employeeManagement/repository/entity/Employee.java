@@ -31,8 +31,9 @@ public class Employee implements Serializable {
     @Column(length = 20, nullable = false)
     private String lastName;
 
-    @Column(length = 10)
+    // enum をデータベースの列に文字列としてマッピング
     @Enumerated(EnumType.STRING)
+    @Column(length = 10)
     private Gender gender;
 
     private LocalDate birthday;

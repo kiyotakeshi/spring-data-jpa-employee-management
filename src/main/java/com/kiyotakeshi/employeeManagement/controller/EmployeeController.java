@@ -2,9 +2,7 @@ package com.kiyotakeshi.employeeManagement.controller;
 
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,10 @@ public class EmployeeController {
     @GetMapping
     public List<Employee> list() {
         return employeeService.getEmployees();
+    }
+
+    @PostMapping
+    public Employee register(@RequestBody Employee request){
+        return employeeService.registerEmployee(request);
     }
 }

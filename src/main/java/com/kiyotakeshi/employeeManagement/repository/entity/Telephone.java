@@ -3,11 +3,9 @@ package com.kiyotakeshi.employeeManagement.repository.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 // 他のエンティティクラスに埋め込まれていることを示す
 // 電話番号だけに単体でアクセスすることがなく、

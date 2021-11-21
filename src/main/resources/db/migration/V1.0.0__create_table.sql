@@ -31,8 +31,12 @@ alter table employee_telephones
 
 create table product
 (
-    category_name varchar(255) not null,
-    product_name  varchar(255) not null,
-    price         integer      not null,
+    category_name      varchar(255) not null,
+    product_name       varchar(255) not null,
+    created_by         varchar(255),
+    created_date       date,
+    last_modified_by   varchar(255),
+    last_modified_date date,
+    price              integer      not null,
     primary key (category_name, product_name)
 )
