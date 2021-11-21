@@ -4,6 +4,7 @@ import com.kiyotakeshi.employeeManagement.repository.entity.Department;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.DepartmentService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,23 +23,11 @@ public class DepartmentController {
 
     @GetMapping
     public List<Department> list() {
-        List<Department> departments = departmentService.getDepartments();
-        departments.forEach(department -> {
-            ArrayList<Employee> employees = new ArrayList<>();
-            department.getEmployees().forEach(employee -> {
-                employees.add(
-                        new Employee(employee.getId(),
-                                employee.getFirstName(),
-                                employee.getLastName(),
-                                employee.getGender(),
-                                employee.getBirthday(),
-                                employee.getMailAddress(),
-                                employee.getTelephones(),
-                                employee.getAuthentication())
-                );
-            });
-            department.setEmployees(employees);
-        });
-        return departments;
+        return departmentService.getDepartments();
+    }
+
+    @GetMapping("/{departmentId}/employees")
+    public List<Employee> listDeploymentEmployees(@PathVariable int departmentId){
+        return departmentService.listDeploymentEmployees(departmentId);
     }
 }
