@@ -1,5 +1,6 @@
 package com.kiyotakeshi.employeeManagement.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -52,6 +53,7 @@ public class Employee implements Serializable {
     // FetchType.LAZY の場合 Department に JsonIgnoreProperties の設定が必要
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "departmentId")
+    @JsonIgnore
     private Department department;
 
     // 所有者(Authentication) のフィールド名を指定
@@ -66,5 +68,17 @@ public class Employee implements Serializable {
         this.mailAddress = mailAddress;
         this.telephones = telephones;
         this.department = department;
+    }
+
+    // http://localhost:9090/departments で循環参照にならないように department のフィールドを除いたコンストラクタ
+    public Employee(Integer id, String firstName, String lastName, Gender gender, LocalDate birthday, String mailAddress, List<Telephone> telephones, Authentication authentication) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.mailAddress = mailAddress;
+        this.telephones = telephones;
+        this.authentication = authentication;
     }
 }

@@ -10,11 +10,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
 # 明示的に書く場合
 #    hibernate:
 #      ddl-auto: none
     show-sql: true
-
 # パラメータの値をログに表示 ex.) binding parameter [1] as [INTEGER] - [1]
 # logging.level.org.hibernate.type: trace にして出力されるログからパッケージを特定
 # 2021-11-21 00:55:11.604 TRACE 11400 --- [ main] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
