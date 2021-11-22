@@ -61,6 +61,16 @@ public class Employee implements Serializable {
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Authentication authentication;
 
+    @ManyToMany
+    // 結合テーブルの名前を設定
+    // 指定しない場合は employee_authorizations(table), employees_id(column), authorizations_id(column) になった
+    @JoinTable(
+            name = "employeeAuthorization",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "authorizationId")
+    )
+    private List<Authorization> authorizations;
+
     public Employee(String firstName, String lastName, Gender gender, LocalDate birthday, String mailAddress, List<Telephone> telephones, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;

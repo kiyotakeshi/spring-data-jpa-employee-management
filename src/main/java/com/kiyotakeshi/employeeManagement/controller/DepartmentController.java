@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,7 +26,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{departmentId}/employees")
-    public List<Employee> listDeploymentEmployees(@PathVariable int departmentId){
-        return departmentService.listDeploymentEmployees(departmentId);
+    public List<Employee> listDepartmentEmployees(@PathVariable int departmentId){
+        return departmentService.listDepartmentEmployees(departmentId);
     }
 }

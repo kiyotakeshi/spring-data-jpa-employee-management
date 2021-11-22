@@ -23,7 +23,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<Employee> listDeploymentEmployees(int departmentId) {
+    public List<Employee> listDepartmentEmployees(int departmentId) {
         return departmentRepository.findById(departmentId).orElseThrow().getEmployees();
 //        Department department = departmentRepository.findById(departmentId).orElseThrow();
 //        ArrayList<Employee> employees = new ArrayList<>();

@@ -8,5 +8,5 @@ import java.util.List;
 public interface DepartmentService {
     List<Department> getDepartments();
 
-    List<Employee> listDeploymentEmployees(int departmentId);
+    List<Employee> listDepartmentEmployees(int departmentId);
 }
