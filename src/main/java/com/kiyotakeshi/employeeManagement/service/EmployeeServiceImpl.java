@@ -1,7 +1,7 @@
 package com.kiyotakeshi.employeeManagement.service;
 
-import com.kiyotakeshi.employeeManagement.model.AuthorizationRequest;
-import com.kiyotakeshi.employeeManagement.model.PasswordRequest;
+import com.kiyotakeshi.employeeManagement.model.request.AuthorizationRequest;
+import com.kiyotakeshi.employeeManagement.model.request.PasswordRequest;
 import com.kiyotakeshi.employeeManagement.repository.AuthenticationRepository;
 import com.kiyotakeshi.employeeManagement.repository.AuthorizationRepository;
 import com.kiyotakeshi.employeeManagement.repository.EmployeeRepository;

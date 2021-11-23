@@ -1,4 +1,4 @@
-package com.kiyotakeshi.employeeManagement.model;
+package com.kiyotakeshi.employeeManagement.model.request;
 
 import com.kiyotakeshi.employeeManagement.repository.entity.Department;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;

@@ -1,6 +1,6 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
-import com.kiyotakeshi.employeeManagement.model.AuthorizationRequest;
+import com.kiyotakeshi.employeeManagement.model.request.AuthorizationRequest;
 import com.kiyotakeshi.employeeManagement.repository.entity.Authorization;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.AuthorizationService;

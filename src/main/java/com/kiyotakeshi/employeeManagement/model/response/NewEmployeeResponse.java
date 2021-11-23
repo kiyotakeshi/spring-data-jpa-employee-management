@@ -1,4 +1,4 @@
-package com.kiyotakeshi.employeeManagement.model;
+package com.kiyotakeshi.employeeManagement.model.response;
 
 import com.kiyotakeshi.employeeManagement.repository.entity.Department;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class EmployeeResponse {
+public class NewEmployeeResponse {
     private String firstName;
     private String lastName;
     private Employee.Gender gender;

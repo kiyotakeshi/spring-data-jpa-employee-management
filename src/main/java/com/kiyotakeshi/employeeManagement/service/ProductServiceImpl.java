@@ -1,6 +1,6 @@
 package com.kiyotakeshi.employeeManagement.service;
 
-import com.kiyotakeshi.employeeManagement.model.ProductUpdateRequest;
+import com.kiyotakeshi.employeeManagement.model.request.ProductUpdateRequest;
 import com.kiyotakeshi.employeeManagement.repository.ProductRepository;
 import com.kiyotakeshi.employeeManagement.repository.entity.Product;
 import org.springframework.stereotype.Service;

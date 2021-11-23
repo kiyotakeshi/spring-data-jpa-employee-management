@@ -1,9 +1,9 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
-import com.kiyotakeshi.employeeManagement.model.AuthorizationRequest;
-import com.kiyotakeshi.employeeManagement.model.EmployeeRequest;
-import com.kiyotakeshi.employeeManagement.model.EmployeeResponse;
-import com.kiyotakeshi.employeeManagement.model.PasswordRequest;
+import com.kiyotakeshi.employeeManagement.model.request.AuthorizationRequest;
+import com.kiyotakeshi.employeeManagement.model.request.EmployeeRequest;
+import com.kiyotakeshi.employeeManagement.model.response.NewEmployeeResponse;
+import com.kiyotakeshi.employeeManagement.model.request.PasswordRequest;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.AuthenticationService;
 import com.kiyotakeshi.employeeManagement.service.EmployeeService;
@@ -29,7 +29,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public EmployeeResponse register(@RequestBody EmployeeRequest request) {
+    public NewEmployeeResponse register(@RequestBody EmployeeRequest request) {
         Employee employee = new Employee(
                 request.getFirstName(),
                 request.getLastName(),
@@ -43,7 +43,7 @@ public class EmployeeController {
 
         var newAuthentication = authenticationService.registerInitial(createdEmployee);
 
-        return new EmployeeResponse(
+        return new NewEmployeeResponse(
                 createdEmployee.getFirstName(),
                 createdEmployee.getLastName(),
                 createdEmployee.getGender(),

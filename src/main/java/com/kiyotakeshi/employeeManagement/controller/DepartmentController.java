@@ -1,6 +1,6 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
-import com.kiyotakeshi.employeeManagement.model.DepartmentRequest;
+import com.kiyotakeshi.employeeManagement.model.request.DepartmentRequest;
 import com.kiyotakeshi.employeeManagement.repository.entity.Department;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.DepartmentService;

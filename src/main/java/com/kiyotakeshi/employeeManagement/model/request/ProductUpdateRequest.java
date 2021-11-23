@@ -1,4 +1,4 @@
-package com.kiyotakeshi.employeeManagement.model;
+package com.kiyotakeshi.employeeManagement.model.request;
 
 import lombok.*;
 

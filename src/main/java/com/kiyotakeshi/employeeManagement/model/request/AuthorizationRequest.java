@@ -1,4 +1,4 @@
-package com.kiyotakeshi.employeeManagement.model;
+package com.kiyotakeshi.employeeManagement.model.request;
 
 import lombok.*;
 
@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class DepartmentRequest {
+public class AuthorizationRequest {
     private String name;
 }
