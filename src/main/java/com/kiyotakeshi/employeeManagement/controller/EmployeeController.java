@@ -1,7 +1,6 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
 import com.kiyotakeshi.employeeManagement.model.request.AuthorizationRequest;
-import com.kiyotakeshi.employeeManagement.model.request.DepartmentRequest;
 import com.kiyotakeshi.employeeManagement.model.request.NewEmployeeRequest;
 import com.kiyotakeshi.employeeManagement.model.request.PasswordRequest;
 import com.kiyotakeshi.employeeManagement.model.response.NewEmployeeResponse;

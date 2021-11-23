@@ -9,13 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 class EmployeeManagementApplicationTests {
@@ -51,7 +50,6 @@ class EmployeeManagementApplicationTests {
 
     @Test
     void retrieve() {
-        employeeRepository.findAll().forEach(System.out::println);
-        // Employee(id=100, firstName=mike, lastName=popcorn, gender=male, birthday=1999-11-29, mailAddress=mike.popcorn@mail.com, telephones=[Telephone(number=0120-444-444, type=business), Telephone(number=0120-555-555, type=business)])
+        assertEquals(2, employeeRepository.findAll().size());
     }
 }
