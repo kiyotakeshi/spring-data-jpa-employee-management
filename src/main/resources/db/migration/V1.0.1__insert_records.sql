@@ -6,6 +6,11 @@ insert into department
     (name, id)
 values ('general affairs', 2);
 
+-- initial registered employee belongs to
+insert into department
+    (name, id)
+values ('Independent', 999);
+
 insert into employee
 (id, birthday, first_name, last_name, mail_address, gender, department_id)
 values (1, '1999-11-29', 'mike', 'popcorn', 'mike.popcorn@mail.com', 'male', 1);
@@ -13,6 +18,7 @@ values (1, '1999-11-29', 'mike', 'popcorn', 'mike.popcorn@mail.com', 'male', 1);
 insert into employee
 (id, birthday, first_name, last_name, mail_address, gender, department_id)
 values (2, '2009-01-19', 'kendrick', 'west', 'kendrick.west@mail.com', 'male', 1);
+
 
 insert into employee_telephones
     (employee_id, number, type)

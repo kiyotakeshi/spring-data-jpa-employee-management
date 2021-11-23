@@ -5,6 +5,7 @@ import com.kiyotakeshi.employeeManagement.model.request.DepartmentRequest;
 import com.kiyotakeshi.employeeManagement.model.request.NewEmployeeRequest;
 import com.kiyotakeshi.employeeManagement.model.request.PasswordRequest;
 import com.kiyotakeshi.employeeManagement.model.response.NewEmployeeResponse;
+import com.kiyotakeshi.employeeManagement.repository.entity.Department;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.AuthenticationService;
 import com.kiyotakeshi.employeeManagement.service.EmployeeService;
@@ -43,7 +44,7 @@ public class EmployeeController {
                 request.getBirthday(),
                 request.getMailAddress(),
                 request.getTelephones(),
-                request.getDepartment()
+                Department.newEmployeeAffiliation()
         );
         Employee createdEmployee = employeeService.registerEmployee(employee);
 
@@ -73,8 +74,8 @@ public class EmployeeController {
         return employeeService.updatePassword(employeeId, request);
     }
 
-    @PutMapping("/{employeeId}/department")
-    public Employee updateDepartment(@PathVariable int employeeId, @RequestBody DepartmentRequest request) {
-        return employeeService.updateDepartment(employeeId, request);
+    @PutMapping("/{employeeId}/department/{departmentId}")
+    public Employee updateDepartment(@PathVariable int employeeId, @PathVariable Integer departmentId) {
+        return employeeService.updateDepartment(employeeId, departmentId);
     }
 }

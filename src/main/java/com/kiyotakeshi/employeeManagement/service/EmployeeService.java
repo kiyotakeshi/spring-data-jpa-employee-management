@@ -18,5 +18,6 @@ public interface EmployeeService {
 
     String updatePassword(int employeeId, PasswordRequest request);
 
-    Employee updateDepartment(int employeeId, DepartmentRequest request);
+
+    Employee updateDepartment(int employeeId, Integer departmentId);
 }

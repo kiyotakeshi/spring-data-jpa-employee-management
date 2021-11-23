@@ -77,8 +77,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee updateDepartment(int employeeId, DepartmentRequest request) {
-        var department = departmentRepository.findByName(request.getName()).orElseThrow();
+    public Employee updateDepartment(int employeeId, Integer departmentId) {
+        var department = departmentRepository.findById(departmentId).orElseThrow();
         Employee employee = employeeRepository.findById(employeeId).orElseThrow();
         employee.setDepartment(department);
         return employeeRepository.save(employee);

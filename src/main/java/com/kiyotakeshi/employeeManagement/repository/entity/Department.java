@@ -33,7 +33,20 @@ public class Department implements Serializable {
     @JsonBackReference
     private List<Employee> employees;
 
+    private Department(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Department(String name) {
         this.name = name;
+    }
+
+    /**
+     * 新規追加した従業員を未所属に指定する
+     * @return
+     */
+    public static Department newEmployeeAffiliation() {
+        return new Department(999, "Independent");
     }
 }

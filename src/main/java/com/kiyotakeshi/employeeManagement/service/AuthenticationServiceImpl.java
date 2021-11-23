@@ -18,7 +18,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public Authentication registerInitial(Employee newCreatedEmployee) {
-        Authentication authentication = new Authentication(UUID.randomUUID().toString(), newCreatedEmployee);
+        Authentication authentication = new Authentication(
+                // 初期パスワード
+                "YOU-HAVE-TO-CHANGE-" + UUID.randomUUID().toString(),
+                newCreatedEmployee);
         return authenticationRepository.save(authentication);
     }
 }
