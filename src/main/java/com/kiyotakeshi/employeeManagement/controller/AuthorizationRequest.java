@@ -2,8 +2,6 @@ package com.kiyotakeshi.employeeManagement.controller;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-
 @Getter
 @Setter
 @ToString

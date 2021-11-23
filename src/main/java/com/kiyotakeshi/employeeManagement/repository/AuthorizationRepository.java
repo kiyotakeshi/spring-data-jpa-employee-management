@@ -4,7 +4,6 @@ import com.kiyotakeshi.employeeManagement.repository.entity.Authorization;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface AuthorizationRepository extends JpaRepository<Authorization, String> {
     // @see https://stackoverflow.com/a/60532225

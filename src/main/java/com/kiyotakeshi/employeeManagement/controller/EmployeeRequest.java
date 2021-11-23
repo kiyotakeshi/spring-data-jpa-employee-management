@@ -1,11 +1,11 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
-import com.kiyotakeshi.employeeManagement.repository.entity.*;
+import com.kiyotakeshi.employeeManagement.repository.entity.Department;
+import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
+import com.kiyotakeshi.employeeManagement.repository.entity.Telephone;
 import lombok.*;
 
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
