@@ -1,6 +1,7 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
 import com.kiyotakeshi.employeeManagement.repository.entity.Authentication;
+import com.kiyotakeshi.employeeManagement.repository.entity.Authorization;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.AuthenticationService;
 import com.kiyotakeshi.employeeManagement.service.EmployeeService;
@@ -53,11 +54,10 @@ public class EmployeeController {
         );
     }
 
-    // TODO:
-    @PutMapping("/{employeeId}/authorizations/{authorizationId}")
+    @PutMapping("/{employeeId}/authorizations/")
     public String attachAuthorization(@PathVariable int employeeId,
-                                      @PathVariable String authorizationId) {
-        employeeService.attachAuthorization(employeeId, authorizationId);
-        return "attach authorization";
+                                      @RequestBody List<AuthorizationRequest> authorizations){
+        var attachedAuthorizations = employeeService.attachAuthorization(employeeId, authorizations);
+        return "attach authorizations: " + attachedAuthorizations.toString();
     }
 }

@@ -75,21 +75,24 @@ alter table authentication
 
 create table authorization
 (
-    id   varchar(255) not null,
-    name varchar(255),
+    id   integer not null auto_increment,
+    name varchar(255) not null,
     primary key (id)
 );
+
+alter table authorization
+    add constraint unique (name);
 
 create table employee_authorization
 (
     employee_id      integer      not null,
-    authorization_id varchar(255) not null
+    authorization_id integer not null
 );
 
 alter table employee_authorization
     add constraint foreign key (authorization_id)
-        references authorization(id);
+        references authorization (id);
 
 alter table employee_authorization
     add constraint foreign key (employee_id)
-        references employee(id);
+        references employee (id);

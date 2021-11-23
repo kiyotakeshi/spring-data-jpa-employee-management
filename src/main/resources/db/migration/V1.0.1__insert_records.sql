@@ -28,20 +28,20 @@ values (1, '1qazxsw12', 1);
 
 insert into authorization
     (id, name)
-values ('a969200b-5d27-4fd9-8c58-0ddc9ff54680', 'ROLE_USER');
+values (1, 'ROLE_USER');
 
 insert into authorization
     (id, name)
-values ('42a4a197-7f79-4809-9549-8ef774eb87eb', 'ROLE_ADMIN');
+values (2, 'ROLE_ADMIN');
 
 INSERT INTO employee_authorization
     (employee_id, authorization_id)
-VALUES (1, 'a969200b-5d27-4fd9-8c58-0ddc9ff54680');
+VALUES (1, 1);
 
 INSERT INTO employee_authorization
     (employee_id, authorization_id)
-VALUES (1, '42a4a197-7f79-4809-9549-8ef774eb87eb');
+VALUES (1, 2);
 
 INSERT INTO employee_authorization
     (employee_id, authorization_id)
-VALUES (2, '42a4a197-7f79-4809-9549-8ef774eb87eb');
+VALUES (2, 2);

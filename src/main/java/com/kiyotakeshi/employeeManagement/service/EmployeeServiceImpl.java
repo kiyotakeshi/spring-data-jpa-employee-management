@@ -1,5 +1,6 @@
 package com.kiyotakeshi.employeeManagement.service;
 
+import com.kiyotakeshi.employeeManagement.controller.AuthorizationRequest;
 import com.kiyotakeshi.employeeManagement.repository.AuthorizationRepository;
 import com.kiyotakeshi.employeeManagement.repository.EmployeeRepository;
 import com.kiyotakeshi.employeeManagement.repository.entity.Authorization;
@@ -7,6 +8,7 @@ import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -32,10 +34,23 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void attachAuthorization(int employeeId, String authorizationId) {
+    public List<String> attachAuthorization(int employeeId, List<AuthorizationRequest> authorizations) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow();
-        Authorization authorization = authorizationRepository.findById(authorizationId).orElseThrow();
-        employee.getAuthorizations().add(authorization);
-        employeeRepository.saveAndFlush(employee);
+        var authorizationNames = authorizations
+                .stream()
+                .map(AuthorizationRequest::getName)
+                .collect(Collectors.toList());
+
+        List<Authorization> foundAuthorizations = authorizationRepository.findAllByNameIn(authorizationNames);
+        employee.addAuthorizations(foundAuthorizations);
+
+        var updatedEmployee = employeeRepository.saveAndFlush(employee);
+
+        List<String> attachedAuthorizationName = updatedEmployee.getAuthorizations()
+                .stream()
+                .map(Authorization::getName)
+                .collect(Collectors.toList());
+
+        return attachedAuthorizationName;
     }
 }

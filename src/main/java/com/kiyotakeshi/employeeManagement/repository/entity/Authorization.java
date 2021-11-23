@@ -16,8 +16,11 @@ import java.util.List;
 public class Authorization implements Serializable {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
+    @Column(unique = true, nullable = false)
+    @NonNull
     private String name;
 
     // 被所有者(Authorization) のフィールドに
@@ -26,8 +29,7 @@ public class Authorization implements Serializable {
     @JsonIgnore
     private List<Employee> employees;
 
-    public Authorization(String id, String name) {
-        this.id = id;
+    public Authorization(String name) {
         this.name = name;
     }
 }

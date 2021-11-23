@@ -29,7 +29,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 
     @Override
     public Authorization registerAuthorization(AuthorizationRequest request) {
-        Authorization authorization = new Authorization(request.getId(), request.getName());
+        Authorization authorization = new Authorization(request.getName());
         return authorizationRepository.save(authorization);
     }
 }
