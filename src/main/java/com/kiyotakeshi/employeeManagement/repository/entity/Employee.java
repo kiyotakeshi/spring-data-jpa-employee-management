@@ -51,7 +51,6 @@ public class Employee implements Serializable {
     // FetchType.LAZY の場合 Department に JsonIgnoreProperties の設定が必要
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "departmentId")
-//    @JsonManagedReference
     private Department department;
 
     // 所有者(Authentication) のフィールド名を指定

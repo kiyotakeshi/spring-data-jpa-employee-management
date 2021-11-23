@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class EmployeeRequest {
+public class NewEmployeeRequest {
     private String firstName;
     private String lastName;
     private Employee.Gender gender;

@@ -1,9 +1,11 @@
 package com.kiyotakeshi.employeeManagement.service;
 
 import com.kiyotakeshi.employeeManagement.model.request.AuthorizationRequest;
+import com.kiyotakeshi.employeeManagement.model.request.DepartmentRequest;
 import com.kiyotakeshi.employeeManagement.model.request.PasswordRequest;
 import com.kiyotakeshi.employeeManagement.repository.AuthenticationRepository;
 import com.kiyotakeshi.employeeManagement.repository.AuthorizationRepository;
+import com.kiyotakeshi.employeeManagement.repository.DepartmentRepository;
 import com.kiyotakeshi.employeeManagement.repository.EmployeeRepository;
 import com.kiyotakeshi.employeeManagement.repository.entity.Authorization;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
@@ -18,11 +20,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
     private final AuthorizationRepository authorizationRepository;
     private final AuthenticationRepository authenticationRepository;
+    private final DepartmentRepository departmentRepository;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AuthorizationRepository authorizationRepository, AuthenticationRepository authenticationRepository) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AuthorizationRepository authorizationRepository, AuthenticationRepository authenticationRepository, DepartmentRepository departmentRepository) {
         this.employeeRepository = employeeRepository;
         this.authorizationRepository = authorizationRepository;
         this.authenticationRepository = authenticationRepository;
+        this.departmentRepository = departmentRepository;
     }
 
     @Override
@@ -30,6 +34,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         // キーを指定して複数レコード取得することも可能
         // return employeeRepository.findAllById(Arrays.asList(1,3));
         return employeeRepository.findAll();
+    }
+
+    @Override
+    public Employee getEmployee(Integer employeeId) {
+        return employeeRepository.findById(employeeId).orElseThrow();
     }
 
     @Override
@@ -65,5 +74,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         authentication.setPassword(request.getPassword());
         authenticationRepository.save(authentication);
         return "password updated!";
+    }
+
+    @Override
+    public Employee updateDepartment(int employeeId, DepartmentRequest request) {
+        var department = departmentRepository.findByName(request.getName()).orElseThrow();
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        employee.setDepartment(department);
+        return employeeRepository.save(employee);
     }
 }

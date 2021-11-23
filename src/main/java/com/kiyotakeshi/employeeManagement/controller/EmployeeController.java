@@ -1,9 +1,10 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
 import com.kiyotakeshi.employeeManagement.model.request.AuthorizationRequest;
-import com.kiyotakeshi.employeeManagement.model.request.EmployeeRequest;
-import com.kiyotakeshi.employeeManagement.model.response.NewEmployeeResponse;
+import com.kiyotakeshi.employeeManagement.model.request.DepartmentRequest;
+import com.kiyotakeshi.employeeManagement.model.request.NewEmployeeRequest;
 import com.kiyotakeshi.employeeManagement.model.request.PasswordRequest;
+import com.kiyotakeshi.employeeManagement.model.response.NewEmployeeResponse;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.AuthenticationService;
 import com.kiyotakeshi.employeeManagement.service.EmployeeService;
@@ -28,8 +29,13 @@ public class EmployeeController {
         return employeeService.getEmployees();
     }
 
+    @GetMapping("/{employeeId}")
+    public Employee getEmployee(@PathVariable Integer employeeId) {
+        return employeeService.getEmployee(employeeId);
+    }
+
     @PostMapping
-    public NewEmployeeResponse register(@RequestBody EmployeeRequest request) {
+    public NewEmployeeResponse register(@RequestBody NewEmployeeRequest request) {
         Employee employee = new Employee(
                 request.getFirstName(),
                 request.getLastName(),
@@ -65,5 +71,10 @@ public class EmployeeController {
     @PutMapping("/{employeeId}/password")
     public String updatePassword(@PathVariable int employeeId, @RequestBody PasswordRequest request) {
         return employeeService.updatePassword(employeeId, request);
+    }
+
+    @PutMapping("/{employeeId}/department")
+    public Employee updateDepartment(@PathVariable int employeeId, @RequestBody DepartmentRequest request) {
+        return employeeService.updateDepartment(employeeId, request);
     }
 }

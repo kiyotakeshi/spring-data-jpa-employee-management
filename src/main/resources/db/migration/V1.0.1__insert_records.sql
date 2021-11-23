@@ -2,6 +2,10 @@ insert into department
     (name, id)
 values ('sales', 1);
 
+insert into department
+    (name, id)
+values ('general affairs', 2);
+
 insert into employee
 (id, birthday, first_name, last_name, mail_address, gender, department_id)
 values (1, '1999-11-29', 'mike', 'popcorn', 'mike.popcorn@mail.com', 'male', 1);
