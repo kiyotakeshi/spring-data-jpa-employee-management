@@ -26,6 +26,10 @@ insert into authentication
     (employee_id, password, id)
 values (1, '1qazxsw12', 1);
 
+insert into authentication
+    (employee_id, password, id)
+values (2, '2wsxzaq1', 2);
+
 insert into authorization
     (id, name)
 values (1, 'ROLE_USER');

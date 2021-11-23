@@ -1,6 +1,6 @@
 package com.kiyotakeshi.employeeManagement.service;
 
-import com.kiyotakeshi.employeeManagement.controller.ProductUpdateRequest;
+import com.kiyotakeshi.employeeManagement.model.ProductUpdateRequest;
 import com.kiyotakeshi.employeeManagement.repository.entity.Product;
 
 import java.util.List;

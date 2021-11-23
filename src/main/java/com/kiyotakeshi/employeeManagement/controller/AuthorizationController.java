@@ -1,5 +1,6 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
+import com.kiyotakeshi.employeeManagement.model.AuthorizationRequest;
 import com.kiyotakeshi.employeeManagement.repository.entity.Authorization;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.AuthorizationService;
@@ -28,7 +29,7 @@ public class AuthorizationController {
     }
 
     @GetMapping("/{authorizationId}/employees")
-    public List<Employee> listAuthorizationEmployees(@PathVariable String authorizationId){
+    public List<Employee> listAuthorizationEmployees(@PathVariable Integer authorizationId){
         return authorizationService.listAuthorizationEmployees(authorizationId);
     }
 }

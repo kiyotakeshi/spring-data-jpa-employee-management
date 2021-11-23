@@ -1,5 +1,6 @@
 package com.kiyotakeshi.employeeManagement.service;
 
+import com.kiyotakeshi.employeeManagement.model.DepartmentRequest;
 import com.kiyotakeshi.employeeManagement.repository.DepartmentRepository;
 import com.kiyotakeshi.employeeManagement.repository.entity.Department;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
@@ -24,9 +25,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public List<Employee> listDepartmentEmployees(int departmentId) {
         return departmentRepository.findById(departmentId).orElseThrow().getEmployees();
-//        Department department = departmentRepository.findById(departmentId).orElseThrow();
-//        ArrayList<Employee> employees = new ArrayList<>();
-//        employees.addAll(department.getEmployees());
-//        return employees;
+    }
+
+    @Override
+    public Department register(DepartmentRequest request) {
+        departmentRepository.findByName(request.getName()).ifPresent(d -> {
+            // ユーザにエラーメッセージとして返す実装にしてもいい
+            throw new RuntimeException("same department is already registered: " + d);
+        });
+        return departmentRepository.save(new Department(request.getName()));
     }
 }

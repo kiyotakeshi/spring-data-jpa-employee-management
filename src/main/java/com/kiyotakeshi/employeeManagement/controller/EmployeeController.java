@@ -1,6 +1,9 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
-import com.kiyotakeshi.employeeManagement.repository.entity.Authentication;
+import com.kiyotakeshi.employeeManagement.model.AuthorizationRequest;
+import com.kiyotakeshi.employeeManagement.model.EmployeeRequest;
+import com.kiyotakeshi.employeeManagement.model.EmployeeResponse;
+import com.kiyotakeshi.employeeManagement.model.PasswordRequest;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.AuthenticationService;
 import com.kiyotakeshi.employeeManagement.service.EmployeeService;
@@ -38,9 +41,7 @@ public class EmployeeController {
         );
         Employee createdEmployee = employeeService.registerEmployee(employee);
 
-        // 管理者がユーザを払い出し、後からユーザ自身でパスワードを変えてもらいたい場合を想定
-        Authentication authentication = new Authentication("random-dummy-pass", createdEmployee);
-        authenticationService.registerInitial(authentication);
+        var newAuthentication = authenticationService.registerInitial(createdEmployee);
 
         return new EmployeeResponse(
                 createdEmployee.getFirstName(),
@@ -50,7 +51,7 @@ public class EmployeeController {
                 createdEmployee.getMailAddress(),
                 createdEmployee.getTelephones(),
                 createdEmployee.getDepartment(),
-                authentication.getPassword()
+                newAuthentication.getPassword()
         );
     }
 

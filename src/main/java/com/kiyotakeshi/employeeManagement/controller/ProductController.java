@@ -1,5 +1,6 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
+import com.kiyotakeshi.employeeManagement.model.ProductUpdateRequest;
 import com.kiyotakeshi.employeeManagement.repository.entity.Product;
 import com.kiyotakeshi.employeeManagement.service.ProductService;
 import org.springframework.web.bind.annotation.*;

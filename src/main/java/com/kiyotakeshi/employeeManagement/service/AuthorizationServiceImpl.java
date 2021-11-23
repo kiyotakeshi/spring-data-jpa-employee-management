@@ -1,6 +1,6 @@
 package com.kiyotakeshi.employeeManagement.service;
 
-import com.kiyotakeshi.employeeManagement.controller.AuthorizationRequest;
+import com.kiyotakeshi.employeeManagement.model.AuthorizationRequest;
 import com.kiyotakeshi.employeeManagement.repository.AuthorizationRepository;
 import com.kiyotakeshi.employeeManagement.repository.entity.Authorization;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
@@ -23,7 +23,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     }
 
     @Override
-    public List<Employee> listAuthorizationEmployees(String authorizationId) {
+    public List<Employee> listAuthorizationEmployees(Integer authorizationId) {
         return authorizationRepository.findById(authorizationId).orElseThrow().getEmployees();
     }
 

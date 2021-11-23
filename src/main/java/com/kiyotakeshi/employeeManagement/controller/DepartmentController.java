@@ -1,12 +1,10 @@
 package com.kiyotakeshi.employeeManagement.controller;
 
+import com.kiyotakeshi.employeeManagement.model.DepartmentRequest;
 import com.kiyotakeshi.employeeManagement.repository.entity.Department;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.DepartmentService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +26,10 @@ public class DepartmentController {
     @GetMapping("/{departmentId}/employees")
     public List<Employee> listDepartmentEmployees(@PathVariable int departmentId){
         return departmentService.listDepartmentEmployees(departmentId);
+    }
+
+    @PostMapping
+    public Department register(@RequestBody DepartmentRequest request) {
+        return departmentService.register(request);
     }
 }
