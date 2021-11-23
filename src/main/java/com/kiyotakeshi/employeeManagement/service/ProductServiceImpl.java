@@ -22,6 +22,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product registerProduct(Product product) {
+        productRepository.findById(product.getId()).ifPresent(p -> {
+                    throw new RuntimeException("same product is already registered: " + p.getId());
+                });
         return productRepository.save(product);
     }
 

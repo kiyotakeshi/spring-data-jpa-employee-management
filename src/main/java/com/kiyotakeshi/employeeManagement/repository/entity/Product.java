@@ -37,6 +37,7 @@ public class Product implements Serializable {
     @EqualsAndHashCode
     @NoArgsConstructor
     @AllArgsConstructor
+    @ToString
     public static class Id implements Serializable {
         private String categoryName;
         private String productName;
