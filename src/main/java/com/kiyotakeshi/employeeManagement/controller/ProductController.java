@@ -26,8 +26,11 @@ public class ProductController {
         return productService.registerProduct(request);
     }
 
-    @PutMapping
-    public Product update(@RequestBody Product request){
-        return productService.updateProduct(request);
+    // /products?categoryName=&productName=
+    @PutMapping(params = {"categoryName", "productName"})
+    public Product update(@RequestParam(name = "categoryName") String categoryName,
+                          @RequestParam(name = "productName") String productName,
+                          @RequestBody ProductUpdateRequest request) {
+        return productService.updateProduct(categoryName, productName, request);
     }
 }
