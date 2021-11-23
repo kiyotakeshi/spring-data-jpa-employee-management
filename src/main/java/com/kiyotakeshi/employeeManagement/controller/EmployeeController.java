@@ -37,6 +37,7 @@ public class EmployeeController {
                 request.getDepartment()
         );
         Employee createdEmployee = employeeService.registerEmployee(employee);
+
         // 管理者がユーザを払い出し、後からユーザ自身でパスワードを変えてもらいたい場合を想定
         Authentication authentication = new Authentication("random-dummy-pass", createdEmployee);
         authenticationService.registerInitial(authentication);
@@ -55,11 +56,13 @@ public class EmployeeController {
 
     @PutMapping("/{employeeId}/authorizations/")
     public String attachAuthorization(@PathVariable int employeeId,
-                                      @RequestBody List<AuthorizationRequest> authorizations){
+                                      @RequestBody List<AuthorizationRequest> authorizations) {
         var attachedAuthorizations = employeeService.attachAuthorization(employeeId, authorizations);
         return "attach authorizations: " + attachedAuthorizations.toString();
     }
 
-    // TODO: update password
-    // @PutMapping
+    @PutMapping("/{employeeId}/password")
+    public String updatePassword(@PathVariable int employeeId, @RequestBody PasswordRequest request) {
+        return employeeService.updatePassword(employeeId, request);
+    }
 }
