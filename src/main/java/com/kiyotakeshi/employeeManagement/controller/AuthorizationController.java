@@ -3,10 +3,7 @@ package com.kiyotakeshi.employeeManagement.controller;
 import com.kiyotakeshi.employeeManagement.repository.entity.Authorization;
 import com.kiyotakeshi.employeeManagement.repository.entity.Employee;
 import com.kiyotakeshi.employeeManagement.service.AuthorizationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,11 @@ public class AuthorizationController {
     @GetMapping
     public List<Authorization> list(){
         return authorizationService.getAuthorizations();
+    }
+
+    @PostMapping
+    public Authorization register(@RequestBody AuthorizationRequest request){
+        return authorizationService.registerAuthorization(request);
     }
 
     @GetMapping("/{authorizationId}/employees")

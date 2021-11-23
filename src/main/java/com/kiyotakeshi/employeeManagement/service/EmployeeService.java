@@ -8,4 +8,6 @@ public interface EmployeeService {
     List<Employee> getEmployees();
 
     Employee registerEmployee(Employee employee);
+
+    void attachAuthorization(int employeeId, String authorizationId);
 }

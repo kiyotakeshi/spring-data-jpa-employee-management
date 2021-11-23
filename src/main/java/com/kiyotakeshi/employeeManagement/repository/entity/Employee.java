@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Entity
@@ -26,7 +27,7 @@ public class Employee implements Serializable {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(length = 20, nullable = false)
@@ -54,7 +55,7 @@ public class Employee implements Serializable {
     // FetchType.LAZY の場合 Department に JsonIgnoreProperties の設定が必要
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "departmentId")
-    @JsonManagedReference
+//    @JsonManagedReference
     private Department department;
 
     // 所有者(Authentication) のフィールド名を指定
@@ -69,7 +70,7 @@ public class Employee implements Serializable {
             joinColumns = @JoinColumn(name = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "authorizationId")
     )
-    private List<Authorization> authorizations;
+    private List<Authorization> authorizations = new ArrayList<>();
 
     public Employee(String firstName, String lastName, Gender gender, LocalDate birthday, String mailAddress, List<Telephone> telephones, Department department) {
         this.firstName = firstName;

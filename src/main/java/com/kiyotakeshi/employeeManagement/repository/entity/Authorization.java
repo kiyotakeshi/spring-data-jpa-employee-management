@@ -22,7 +22,12 @@ public class Authorization implements Serializable {
 
     // 被所有者(Authorization) のフィールドに
     // 所有者側のエンティティのフィールド名を指定
-    @ManyToMany(mappedBy = "authorizations")
+    @ManyToMany(mappedBy = "authorizations", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JsonIgnore
     private List<Employee> employees;
+
+    public Authorization(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

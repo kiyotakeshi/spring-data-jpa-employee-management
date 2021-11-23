@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Authentication implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore // フロントに不要な値のため
     private Integer id;
 
@@ -27,6 +27,10 @@ public class Authentication implements Serializable {
     @JoinColumn(name = "employeeId", nullable = false, unique = true) // エンティティ自身のテーブル名の列名を指定
     @JsonIgnore // Jackson によるシリアライズを行わない(循環参照になるため)
     private Employee employee;
+
+    public Authentication(String password) {
+        this.password = password;
+    }
 
     public Authentication(String password, Employee employee) {
         this.password = password;
