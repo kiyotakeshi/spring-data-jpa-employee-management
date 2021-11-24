@@ -68,6 +68,14 @@ public class EmployeeController {
         return "attach authorizations: " + attachedAuthorizations.toString();
     }
 
+    // TODO: パスは考慮が必要
+    @PutMapping("/{employeeId}/authorization/")
+    public String detachAuthorization(@PathVariable int employeeId,
+                                      @RequestBody AuthorizationRequest authorization) {
+        String attachedAuthorization = employeeService.detachAuthorization(employeeId, authorization);
+        return "attach authorizations: " + attachedAuthorization;
+    }
+
     @PutMapping("/{employeeId}/password")
     public String updatePassword(@PathVariable int employeeId, @RequestBody PasswordRequest request) {
         return employeeService.updatePassword(employeeId, request);

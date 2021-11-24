@@ -54,7 +54,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .collect(Collectors.toList());
 
         List<Authorization> foundAuthorizations = authorizationRepository.findAllByNameIn(authorizationNames);
-        employee.addAuthorizations(foundAuthorizations);
+        // employee.addAuthorizations(foundAuthorizations);
+        employee.removeAuthorization(foundAuthorizations.get(0));
 
         var updatedEmployee = employeeRepository.saveAndFlush(employee);
 
@@ -64,6 +65,17 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .collect(Collectors.toList());
 
         return attachedAuthorizationName;
+    }
+
+    @Override
+    public String detachAuthorization(int employeeId, AuthorizationRequest authorization) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow();
+        // TODO: employee に含まれている authorization か確認する処理
+        Authorization foundAuthorization = authorizationRepository.findByName(authorization.getName());
+        employee.removeAuthorization(foundAuthorization);
+
+        employeeRepository.saveAndFlush(employee);
+        return foundAuthorization.getName();
     }
 
     @Override

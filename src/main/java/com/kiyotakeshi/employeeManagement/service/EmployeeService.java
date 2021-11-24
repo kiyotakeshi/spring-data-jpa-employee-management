@@ -15,8 +15,9 @@ public interface EmployeeService {
 
     List<String> attachAuthorization(int employeeId, List<AuthorizationRequest> authorizations);
 
-    String updatePassword(int employeeId, PasswordRequest request);
+    String detachAuthorization(int employeeId, AuthorizationRequest authorization);
 
+    String updatePassword(int employeeId, PasswordRequest request);
 
     Employee updateDepartment(int employeeId, Integer departmentId);
 }

@@ -9,4 +9,6 @@ public interface AuthorizationRepository extends JpaRepository<Authorization, In
     // @see https://stackoverflow.com/a/60532225
     // @see https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation
     List<Authorization> findAllByNameIn(List<String> names);
+
+    Authorization findByName(String name);
 }

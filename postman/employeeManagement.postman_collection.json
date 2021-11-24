@@ -208,7 +208,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:9090/employees/2",
+							"raw": "http://localhost:9090/employees/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -216,7 +216,7 @@
 							"port": "9090",
 							"path": [
 								"employees",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -229,7 +229,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"name\": \"ROLE_ADMIN\"\n    },\n    {\n        \"name\": \"ROLE_MANAGER\"\n    },\n    {\n        \"name\": \"ROLE_USER\"\n    }\n]",
+							"raw": "[\n    {\n        \"name\": \"ROLE_ADMIN\"\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -247,6 +247,37 @@
 								"employees",
 								"1",
 								"authorizations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detach authorization to user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ROLE_ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9090/employees/1/authorization/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"employees",
+								"1",
+								"authorization",
 								""
 							]
 						}

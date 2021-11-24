@@ -72,6 +72,10 @@ public class Employee implements Serializable {
         this.authorizations.addAll(authorizations);
     }
 
+    public void removeAuthorization(Authorization authorization){
+        this.authorizations.remove(authorization);
+    }
+
     public Employee(String firstName, String lastName, Gender gender, LocalDate birthday, String mailAddress, List<Telephone> telephones, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
